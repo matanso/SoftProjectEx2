@@ -58,9 +58,10 @@ int spBPQueueGetMaxSize(SPBPQueue *source) {
 SP_BPQUEUE_MSG spBPQueueEnqueue(SPBPQueue *source, int index, double value) {
     if(source == NULL) return SP_BPQUEUE_INVALID_ARGUMENT;
     int i = source->currSize;
+    bool isFull = source->currSize == source->maxSize;
     while (i > 0 && value > source->data[i - 1].value) i--;
-    if(i == 0 && source->currSize == source->maxSize) return SP_BPQUEUE_FULL;
-    if(source->currSize == source->maxSize) {
+    if(i == 0 && isFull) return SP_BPQUEUE_FULL;
+    if(isFull) {
         int start = 0;
         i--;
         while(start < i) {
@@ -78,7 +79,7 @@ SP_BPQUEUE_MSG spBPQueueEnqueue(SPBPQueue *source, int index, double value) {
     source->data[i].value = value;
     source->data[i].index = index;
 
-    if(source->currSize == source->maxSize) return SP_BPQUEUE_FULL;
+    if(isFull) return SP_BPQUEUE_FULL;
     source->currSize++;
     return SP_BPQUEUE_SUCCESS;
 

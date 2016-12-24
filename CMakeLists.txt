@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 project(Ex_2)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c99")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g - Werror -std=c99")
 
 set(SOURCE_FILES
 #    unit_tests/sp_point_unit_test.c
