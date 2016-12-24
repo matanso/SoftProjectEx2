@@ -79,7 +79,7 @@ SP_BPQUEUE_MSG spBPQueueEnqueue(SPBPQueue *source, int index, double value) {
     source->data[i].value = value;
     source->data[i].index = index;
 
-    if(isFull) return SP_BPQUEUE_FULL;
+    if(isFull) return SP_BPQUEUE_FULL; // todo MSG needed only when error
     source->currSize++;
     return SP_BPQUEUE_SUCCESS;
 
