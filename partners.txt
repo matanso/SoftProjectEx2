@@ -1,7 +1,7 @@
 Full Name 1: Matan Sokolovsky
 Id No 1: 318879855
 User Name 1: matans1
-Full Name 2: 
-Id No 2: 
-User Name 2: 
+Full Name 2: Ariel Bereslavsky
+Id No 2: 315005652
+User Name 2: bereslavsky
 Assignment No: 2
