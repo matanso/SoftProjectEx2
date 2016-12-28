@@ -29,6 +29,15 @@ typedef enum sp_bp_queue_msg_t {
 /**
  * TODO Complete documentation
  */
+
+/**
+* Arguements:
+* maxSize: integer, sets the maximum size of the queue
+* Return values:
+* pointer to the newly created queue
+* returns NULL pointer upon allocation error, 
+* or if the maxSize arguement is invalid
+*/
 SPBPQueue* spBPQueueCreate(int maxSize);
 
 /**
