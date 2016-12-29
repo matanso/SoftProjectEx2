@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "main_aux.h"
 
 SPPoint *mainAuxScanPoint(int dim, int index) {
@@ -18,4 +19,18 @@ SPPoint **mainAuxScanPoints(int dim, int n) {
         if(points[i] == NULL) return NULL;
     }
     return points;
+}
+
+void mainAuxPrintKPoints(SPBPQueue *queue) {
+    if(queue == NULL) return;
+    BPQueueElement element;
+    bool isEmpty = spBPQueueIsEmpty(queue);
+    while (!isEmpty) { // Printing k nearest points
+        assert(spBPQueuePeek(queue, &element) == SP_BPQUEUE_SUCCESS);
+        printf("%d", element.index);
+        assert(spBPQueueDequeue(queue) == SP_BPQUEUE_SUCCESS);
+        isEmpty = spBPQueueIsEmpty(queue);
+        if (!isEmpty) printf(", ");
+    }
+    printf("\n");
 }

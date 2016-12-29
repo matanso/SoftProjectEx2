@@ -80,6 +80,7 @@ SP_BPQUEUE_MSG spBPQueueEnqueue(SPBPQueue *source, int index, double value) {
 
     if (isFull) return SP_BPQUEUE_SUCCESS; //SP_BPQUEUE_FULL;
     source->currSize++;
+
     return SP_BPQUEUE_SUCCESS;
 }
 

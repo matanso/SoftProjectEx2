@@ -23,23 +23,13 @@ int main() {
     SPBPQueue *queue = spBPQueueCreate(k);
 
     // Inserting n points to queue according to L2SquaredDistance from query point
-    for (int i = 0; i < n; i++)
-        spBPQueueEnqueue(queue, spPointGetIndex(points[i]), spPointL2SquaredDistance(points[i], q));
+    assert(queue != NULL);
+    for (int i = 0; i < n; i++) assert(
+                spBPQueueEnqueue(queue, spPointGetIndex(points[i]), spPointL2SquaredDistance(points[i], q)) ==
+                SP_BPQUEUE_SUCCESS);
 
     // Output
-    assert(queue != NULL);
-    for(int i = 0; i < n; i++) assert(spBPQueueEnqueue(queue, spPointGetIndex(points[i]), spPointL2SquaredDistance(points[i], q)) == SP_BPQUEUE_SUCCESS);
-    BPQueueElement element;
-    bool isEmpty = spBPQueueIsEmpty(queue);
-    while (!isEmpty) { // Printing k nearest points
-        assert(spBPQueuePeek(queue, &element) == SP_BPQUEUE_SUCCESS);
-        printf("%d", element.index);
-        assert(spBPQueueDequeue(queue) == SP_BPQUEUE_SUCCESS);
-        isEmpty = spBPQueueIsEmpty(queue);
-        if (!isEmpty) printf(", ");
-    }
-    printf("\n");
-
+    mainAuxPrintKPoints(queue);
 
     // Destroy points
     for (int i = 0; i < n; i++) {
